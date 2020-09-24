@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Szkoła ponadgimnazjalna</title>
+	<link rel="stylesheet" type="text/css" href="styl.css">
+	<script type="text/javascript">
+		//funkcja
+		var srednia = function() {
+				console.log("Pass");	
+
+			//pobranie danych z formularzy
+			var i1 = document.getElementById('i1').value;
+			var i2 = document.getElementById('i2').value;
+			var i3 = document.getElementById('i3').value;
+
+			//walidacja danych
+			if(isNaN(i1) || isNaN(i2) || isNaN(i3) || i1=="" || i2=="" || i3=="" ) {
+				alert("Wpisz poprawne dane");
+			} else {
+				//konwersja na float
+				i1 = parseFloat(i1);
+				i2 = parseFloat(i2);
+				i3 = parseFloat(i3);
+
+				var minimum;
+				if(i1<i2) {
+					if(i1<i3) minimum = i1; else minimum = i3;
+				}else { 
+					if(i2<i3) minimum = i2; else minimum = i2;
+					minimum = i2;
+				}
+			//console.log((i1+i2+i3)/3);
+			document.getElementById('wynik').innerHTML = Math.min(i1,i2,i3);
+			//document.getElementById('wynik').innerHTML = minimum;
+			}
+		}
+
+	</script>
+</head>
+<body>
+	<header>
+		<!--naglowek-->
+		<h1>Projekt  strony  internetowej  szkoły 
+		ponadgimnazjalnej</h1>
+		
+	</header>
+	<main>
+		<section id="pl">
+			<!-- panel lewy-->
+			<table>
+				<tr>
+					<th>Treść zapytania</th>
+					<th>Zrzut ekranu</th>
+				</tr>
+				<tr>
+					<td>INSERT INTO klasa VALUES("5", "3a");</td>
+					<td><img src="kwerenda1.jpg" alt="kwerenda1.jpg"></td>
+				</tr>
+				<tr>
+					<td>SELECT nazwa, AVG(Srednia_ocen) FROM klasa, uczen WHERE klasa.id=uczen.id_klasy GROUP BY uczen.id_klasy;</td>
+					<td><img src="kwerenda2.jpg" alt="kwerenda2.jpg"></td>
+				</tr>
+				<tr>
+					<td>CREATE USER 'Dyrektor'@'localhost' IDENTIFIED BY 'dyr_123';</td>
+					<td><img src="nowy_uzytkownik.jpg" alt="nowy_uzytkownik.jpg"></td>
+				</tr>
+				<tr>
+					<td>GRANT ALL PRIVILEGES ON szkola.* TO 'Dyrektor'@'localhost';</td>
+					<td><img src="uprawnienia.jpg" alt="uprawnienia.jpg"></td>
+				</tr>
+			</table>
+		</section>
+		<section id="pr">
+			<!-- panel prawy-->
+			<h2>Do pobrania</h2>
+			<ul>
+				<li><a href="../baza/zapytania.txt">zapytania SQL</a></li>
+				<li><a href="../baza/szkola_nowa.sql">baza danych</a></li>
+			</ul>
+			<hr>
+			<h3>Wyznaczanie najniższej średniej</h3>
+			<ul>
+				<li>Polak <input type="text" name="i1" id="i1"></li>
+				<li>Nowak <input type="text" name="i2" id="i2"></li>
+				<li>Rysik <input type="text" name="i3" id="i3"></li>
+			</ul>
+			<button onclick="srednia()">Wyznacz</button>
+			<h3>Najniższa średnia</h3>
+			<!--wynik-->
+			<div id="wynik"></div>
+		</section>
+	</main>
+	<footer>
+		<!--stopka-->
+		<h3>stronę wykonał/a:12345678910</h3>
+	</footer>
+	
+</body>
+</html>
